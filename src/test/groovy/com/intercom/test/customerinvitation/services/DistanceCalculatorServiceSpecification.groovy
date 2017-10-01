@@ -1,6 +1,6 @@
-package com.intercom.test.customerinvitation.reader
+package com.intercom.test.customerinvitation.services
 
-import com.intercom.test.customerinvitation.entity.Coordinate
+import com.intercom.test.customerinvitation.entities.Coordinate
 import spock.lang.Specification
 
 

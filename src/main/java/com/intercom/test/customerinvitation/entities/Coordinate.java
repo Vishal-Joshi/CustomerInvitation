@@ -1,4 +1,4 @@
-package com.intercom.test.customerinvitation.entity;
+package com.intercom.test.customerinvitation.entities;
 
 import lombok.Builder;
 import lombok.Getter;

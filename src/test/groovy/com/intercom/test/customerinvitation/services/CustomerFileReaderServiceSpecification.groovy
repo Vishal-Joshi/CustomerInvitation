@@ -1,4 +1,4 @@
-package com.intercom.test.customerinvitation.reader
+package com.intercom.test.customerinvitation.services
 
 import spock.lang.Specification
 
