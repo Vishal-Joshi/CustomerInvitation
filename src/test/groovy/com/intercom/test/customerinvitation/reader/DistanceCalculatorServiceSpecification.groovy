@@ -9,8 +9,8 @@ class DistanceCalculatorServiceSpecification extends Specification {
     def "service should take two gps coordinates and find correct distance in kilometers"() {
         given:
         DistanceCalculatorService distanceCalculatorService = new DistanceCalculatorService()
-        Coordinate london = new Coordinate(51.5085, -0.1257)
-        Coordinate dublin = new Coordinate(53.3331, -6.2489)
+        Coordinate london = Coordinate.builder().latitude(51.5085).longitude(-0.1257).build()
+        Coordinate dublin = Coordinate.builder().latitude(53.3331).longitude(-6.2489).build()
         //source https://www.distancecalculator.net/from-london-to-dublin
         double expectedDistanceInKms = 462
 
@@ -25,8 +25,8 @@ class DistanceCalculatorServiceSpecification extends Specification {
     def "service should verify that distance between same set coordinates is 0.0"() {
         given:
         DistanceCalculatorService distanceCalculatorService = new DistanceCalculatorService()
-        Coordinate london = new Coordinate(51.5085, -0.1257)
-        Coordinate againLondon = new Coordinate(51.5085, -0.1257)
+        Coordinate london = Coordinate.builder().latitude(51.5085).longitude(-0.1257).build()
+        Coordinate againLondon = Coordinate.builder().latitude(51.5085).longitude(-0.1257).build()
         //source https://www.distancecalculator.net/from-london-to-dublin
         double expectedDistanceInKms = 0.0
 
