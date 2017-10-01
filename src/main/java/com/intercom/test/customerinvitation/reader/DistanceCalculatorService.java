@@ -14,6 +14,14 @@ public class DistanceCalculatorService {
      */
     private static final double EARTH_RADIUS_IN_KMS = 6371.0;
 
+    /**
+     * This methods take two {@link Coordinate} and find distance between
+     * them using the first formulae mentioned <a href="https://en.wikipedia.org/wiki/Great-circle_distance">here.</a>
+     *
+     * @param from source coordinate from where to start calculating distance
+     * @param to   destination coordinate
+     * @return distance in kilometers (kms) rounded to nearby digits using {@link Math#round(double)}
+     */
     public double calculateDistanceInKilometers(Coordinate from, Coordinate to) {
         double fromLatitudeInRadians = degreesToRadians(from.getLatitude());
         double toLatitudeInRadians = degreesToRadians(to.getLatitude());

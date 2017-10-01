@@ -1,10 +1,10 @@
 package com.intercom.test.customerinvitation.entity;
 
 import lombok.Builder;
-import lombok.Value;
+import lombok.Getter;
 
-@Value
 @Builder
+@Getter
 public class Coordinate {
     private double latitude;
     private double longitude;
