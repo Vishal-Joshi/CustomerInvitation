@@ -1,6 +1,7 @@
 package com.intercom.test.customerinvitation.services;
 
 import com.intercom.test.customerinvitation.entities.Coordinate;
+import org.springframework.stereotype.Service;
 
 /**
  * This service should be used to find distance between
@@ -8,6 +9,7 @@ import com.intercom.test.customerinvitation.entities.Coordinate;
  *
  * @author Vishal Joshi
  */
+@Service
 public class DistanceCalculatorService {
     /**
      * {@see https://en.wikipedia.org/wiki/Earth_radius}
