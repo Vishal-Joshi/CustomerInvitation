@@ -11,9 +11,20 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+/**
+ * This service should be used to read the customer file
+ * and convert it into list of customer objects.
+ * @author Vishal Joshi
+ */
 @Slf4j
 public class CustomerFileReaderService {
 
+    /**
+     * read customer file from the given path arranged in one customer json per line
+     * @param path path to read file from
+     * @return list of parsed customer objects
+     * @throws IOException if file is not found at the given path
+     */
     public List<Customer> readFile(String path) throws IOException {
         final ObjectMapper objectMapper = new ObjectMapper();
         return Files
