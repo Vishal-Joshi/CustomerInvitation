@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * @author Vishal Joshi
  */
 @Service
-public class DistanceCalculatorService {
+class DistanceCalculatorService {
     /**
      * {@see https://en.wikipedia.org/wiki/Earth_radius}
      */
@@ -24,7 +24,7 @@ public class DistanceCalculatorService {
      * @param to   destination coordinate
      * @return distance in kilometers (kms) rounded to nearby digits using {@link Math#round(double)}
      */
-    public double calculateDistanceInKilometers(Coordinate from, Coordinate to) {
+    double calculateDistanceInKilometers(Coordinate from, Coordinate to) {
         double fromLatitudeInRadians = degreesToRadians(from.getLatitude());
         double toLatitudeInRadians = degreesToRadians(to.getLatitude());
 

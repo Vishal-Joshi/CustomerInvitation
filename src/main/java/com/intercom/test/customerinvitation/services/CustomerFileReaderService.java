@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Service
-public class CustomerFileReaderService {
+class CustomerFileReaderService {
 
     /**
      * read customer file from the given path arranged in one customer json per line
@@ -29,7 +29,7 @@ public class CustomerFileReaderService {
      * @return list of parsed customer objects
      * @throws IOException if file is not found at the given path
      */
-    public List<Customer> readFile(String path) throws IOException {
+    List<Customer> readFile(String path) throws IOException {
         final ObjectMapper objectMapper = new ObjectMapper();
         return Files
                 .lines(Paths.get(path))

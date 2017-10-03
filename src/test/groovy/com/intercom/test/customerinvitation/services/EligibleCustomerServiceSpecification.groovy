@@ -1,6 +1,6 @@
 package com.intercom.test.customerinvitation.services
 
-import com.intercom.test.customerinvitation.CoordinateObjectFactory
+import com.intercom.test.customerinvitation.factories.CoordinateObjectFactory
 import com.intercom.test.customerinvitation.entities.Coordinate
 import com.intercom.test.customerinvitation.entities.Customer
 import spock.lang.Specification
@@ -30,7 +30,7 @@ class EligibleCustomerServiceSpecification extends Specification {
         Coordinate anyFarOffPlaceFromDublin = new Coordinate(51.5074, 0.1278)
 
         when:
-        List<Customer> customers = eligibleCustomerService.printEligibleCustomers(path, dublin, radiusInKms)
+        List<Customer> customers = eligibleCustomerService.computeEligibleCustomers(path, dublin, radiusInKms)
 
         then:
         1 * mockCustomerFileReaderService.readFile(_ as String) >> expectedListOfCustomers

@@ -1,6 +1,6 @@
 package com.intercom.test.customerinvitation.services;
 
-import com.intercom.test.customerinvitation.CoordinateObjectFactory;
+import com.intercom.test.customerinvitation.factories.CoordinateObjectFactory;
 import com.intercom.test.customerinvitation.entities.Coordinate;
 import com.intercom.test.customerinvitation.entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +10,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This class should be used as the only
+ * entry service to compute eligible customers.
+ * @author Vishal Joshi
+ */
 @Service
 public class EligibleCustomerService {
 
@@ -26,17 +31,22 @@ public class EligibleCustomerService {
         this.coordinateObjectFactory = coordinateObjectFactory;
     }
 
-    public List<Customer> printEligibleCustomers(String path, Coordinate source, double radiusInKms) {
-        try {
-            return customerFileReaderService.readFile(path)
-                    .stream()
-                    .filter(customer -> distanceCalculatorService.calculateDistanceInKilometers(source, coordinateObjectFactory.createObject(customer.getLatitude(), customer.getLongitude())) < radiusInKms)
-                    .sorted((Customer c1, Customer c2) -> c1.getUserId().compareTo(c2.getUserId()))
-                    .collect(Collectors.toList());
+    /**
+     * This method computes the eligible customers lying within
+     * the specified radius from the given source and sort them by {@link Customer#getUserId()}
+     * @param path customer file path to read customers from
+     * @param source source point to compute radius
+     * @param radiusInKms maximum allowed radius for customers to be in
+     * @return list of eligible customers sorted by userId
+     * @throws IOException if file is not found at given path
+     */
+    public List<Customer> computeEligibleCustomers(String path, Coordinate source, double radiusInKms) throws IOException {
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return customerFileReaderService.readFile(path)
+                .stream()
+                .filter(customer -> distanceCalculatorService.calculateDistanceInKilometers(source, coordinateObjectFactory.createObject(customer.getLatitude(), customer.getLongitude())) < radiusInKms)
+                .sorted((Customer c1, Customer c2) -> c1.getUserId().compareTo(c2.getUserId()))
+                .collect(Collectors.toList());
+
     }
 }

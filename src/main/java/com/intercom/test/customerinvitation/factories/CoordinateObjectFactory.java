@@ -1,4 +1,4 @@
-package com.intercom.test.customerinvitation;
+package com.intercom.test.customerinvitation.factories;
 
 import com.intercom.test.customerinvitation.entities.Coordinate;
 import org.springframework.stereotype.Service;
