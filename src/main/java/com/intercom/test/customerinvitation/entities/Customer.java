@@ -7,7 +7,7 @@ import lombok.Value;
 public class Customer {
     private double latitude;
     @JsonProperty(value = "user_id")
-    private String userId;
+    private Long userId;
     private String name;
     private double longitude;
 }

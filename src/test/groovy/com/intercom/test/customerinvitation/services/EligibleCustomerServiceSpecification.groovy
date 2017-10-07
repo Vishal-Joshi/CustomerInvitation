@@ -18,9 +18,9 @@ class EligibleCustomerServiceSpecification extends Specification {
         double radiusInKms = 100
 
         //London 51.5074° N, 0.1278° W
-        def customer1 = new Customer(53.339428, "1", "Vishal", -6.257664)
-        def customer2 = new Customer(53.349428, "2", "Vishal", -6.267664)
-        def customerFarOffInLondon = new Customer(51.5074, "3", "Vishal", 0.1278)
+        def customer1 = new Customer(53.339428, 1, "Vishal", -6.257664)
+        def customer2 = new Customer(53.349428, 2, "Vishal", -6.267664)
+        def customerFarOffInLondon = new Customer(51.5074, 3, "Vishal", 0.1278)
         List<Customer> expectedListOfCustomers = [customer1, customer2, customerFarOffInLondon]
 
         //Dublin 53.339428, -6.257664.
@@ -53,13 +53,13 @@ class EligibleCustomerServiceSpecification extends Specification {
         double radiusInKms = 100
 
         //London 51.5074° N, 0.1278° W
-        def customer1 = new Customer(53.339428, "1", "Vishal", -6.257664)
-        def customer2 = new Customer(53.349428, "2", "Vishal", -6.267664)
-        def customer3 = new Customer(53.349428, "3", "Vishal", -6.267664)
-        def customer4 = new Customer(53.349428, "4", "Vishal", -6.267664)
-        def customer5 = new Customer(53.349428, "5", "Vishal", -6.267664)
-        def customer6 = new Customer(53.349428, "6", "Vishal", -6.267664)
-        def customer7 = new Customer(53.349428, "11", "Vishal", -6.267664)
+        def customer1 = new Customer(53.339428, 1, "Vishal", -6.257664)
+        def customer2 = new Customer(53.349428, 2, "Vishal", -6.267664)
+        def customer3 = new Customer(53.349428, 3, "Vishal", -6.267664)
+        def customer4 = new Customer(53.349428, 4, "Vishal", -6.267664)
+        def customer5 = new Customer(53.349428, 5, "Vishal", -6.267664)
+        def customer6 = new Customer(53.349428, 6, "Vishal", -6.267664)
+        def customer7 = new Customer(53.349428, 11, "Vishal", -6.267664)
         List<Customer> expectedListOfCustomers = [customer1, customer2, customer3, customer4, customer5, customer6, customer7]
 
         //Dublin 53.339428, -6.257664.
