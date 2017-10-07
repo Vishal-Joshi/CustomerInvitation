@@ -24,7 +24,7 @@ public class Application {
         //Dublin 53.339428, -6.257664
         Coordinate dublin = new Coordinate(53.339428, -6.257664);
         double radiusInKms = 100;
-        String path = this.getClass().getClassLoader().getResource("customer-file.txt").getPath();
+        String path = Application.class.getResource("/customer-file.txt").getPath();
 
         try {
             eligibleCustomerService
