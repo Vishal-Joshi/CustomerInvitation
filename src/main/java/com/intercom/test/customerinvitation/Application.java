@@ -2,6 +2,7 @@ package com.intercom.test.customerinvitation;
 
 import com.intercom.test.customerinvitation.entities.Coordinate;
 import com.intercom.test.customerinvitation.services.EligibleCustomerService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component
+@Slf4j
 public class Application {
     @Autowired
     private EligibleCustomerService eligibleCustomerService;
@@ -28,9 +30,9 @@ public class Application {
             eligibleCustomerService
                     .computeEligibleCustomers(path, dublin, radiusInKms)
                     .stream()
-                    .forEach(customer -> System.out.println(customer.getName() + "-" + customer.getUserId()));
+                    .forEach(customer -> log.info(customer.getName() + "-" + customer.getUserId()));
         } catch (IOException e) {
-            System.out.print("Exception occurred" + e);
+            log.error("Exception occurred: ", e);
         }
     }
 }
