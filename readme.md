@@ -17,4 +17,6 @@ on log file.
 
 ## Build and execute
 1. Use `mvn clean package` to build `customerinvitation-jar-with-dependencies.jar` which is an * executable jar*
-2. Use `java -jar target/customerinvitation-jar-with-dependencies.jar` to execute the jar
+2. Use `java -jar target/customerinvitation-jar-with-dependencies.jar </path/to/customer-file> <radius value as 'double' in Kms>` to execute the jar
+For example, 
+java -jar target/customerinvitation-jar-with-dependencies.jar /Users/CustomerInvitation/src/main/resources/customer-file.txt 100
