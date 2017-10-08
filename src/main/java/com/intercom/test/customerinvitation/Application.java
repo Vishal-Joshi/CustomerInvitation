@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 
@@ -17,15 +18,29 @@ public class Application {
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext("com.intercom.test.customerinvitation");
-        annotationConfigApplicationContext.getBean(Application.class).start();
+
+        if (args.length == 2) {
+            String customerFilePath = args[0];
+
+            try {
+                double radiusInKms = Double.parseDouble(args[1]);
+                if (!StringUtils.isEmpty(customerFilePath)) {
+                    annotationConfigApplicationContext.getBean(Application.class).start(customerFilePath, radiusInKms);
+                } else {
+                    log.error("Customer file path cannot be empty!");
+                }
+            } catch (Exception exception) {
+                log.error("Invalid radius value, value should be 'double'");
+            }
+        } else {
+            log.error("Required params not provided!");
+        }
     }
 
-    private void start() {
+    private void start(String path, double radiusInKms) {
         //Dublin 53.339428, -6.257664
         Coordinate dublin = new Coordinate(53.339428, -6.257664);
-        double radiusInKms = 100;
-        String path = Application.class.getResource("/customer-file.txt").getPath();
-
+        log.debug("File path received: " + path);
         try {
             eligibleCustomerService
                     .computeEligibleCustomers(path, dublin, radiusInKms)
